@@ -1,93 +1,107 @@
-XV6 User Authentication & Multi-User Support
-This project enhances the MIT xv6 operating system by adding user authentication and multi-user support. It introduces login/logout functionality, user roles (admin/user), and the ability for administrators to manage users directly within xv6.
+# XV6 User Authentication & Multi-User Support
 
-🔐 Features
-Login system with username and password
+This project enhances the MIT xv6 operating system by adding **user authentication** and **multi-user support**. It introduces login/logout functionality, user roles (admin/user), and the ability for administrators to manage users directly within xv6.
 
-Logout command
+---
 
-Admin and regular user roles
+## 🔐 Features
 
-Admin can add, delete, and list users
+- Login system with username and password  
+- Logout command  
+- Admin and regular user roles  
+- Admin can add, delete, and list users  
+- User credentials stored persistently  
+- Basic security checks  
+- Seamless integration with existing xv6 commands  
 
-User credentials stored persistently
+---
 
-Basic security checks
+## 📁 File Structure
 
-Seamless integration with xv6 commands
+| File/Folder        | Description                                 |
+|--------------------|---------------------------------------------|
+| `user/login.c`     | User login program                          |
+| `user/logout.c`    | User logout program                         |
+| `user/usermgmt.c`  | Admin tool to manage users                  |
+| `kernel/user.c`    | Kernel-side user management implementation  |
+| `kernel/user.h`    | User data structures and function prototypes|
+| `Makefile`         | Updated to include new user programs        |
 
-📁 File Structure
-File/Folder
+---
 
-Description
+## 🧪 How to Use
 
-user/login.c
+### 👨‍💻 Default Credentials
 
-User login program
+- **Username:** `admin`  
+- **Password:** `admin`  
 
-user/logout.c
+### 🗽 Login
 
-User logout program
-
-user/usermgmt.c
-
-Admin tool to manage users
-
-kernel/user.c
-
-Kernel-side user management implementation
-
-kernel/user.h
-
-User data structures and function prototypes
-
-Makefile
-
-Updated to include new user programs
-
-🧪 How to Use
-👨‍💻 Default Credentials
-Username: admin
-
-Password: admin
-
-🗽 Login
+```sh
 $ login
+```
 
-Enter username and password when prompted.
+Enter the username and password when prompted.
 
-🚪 Logout
+### 🚪 Logout
+
+```sh
 $ logout
+```
 
-🛠 Admin User Management
+### 🛠 Admin User Management
+
 Run only as admin:
 
+```sh
 $ usermgmt
+```
 
-Options will allow adding, deleting, and listing users.
+Options will allow:
 
-⚙️ How to Build and Run
-1. Clean and Compile
+- Adding users  
+- Deleting users  
+- Listing all users  
+
+---
+
+## ⚙️ How to Build and Run
+
+### 1. Clean and Compile
+
+```sh
 make clean
 make qemu
+```
 
-2. If Using GitHub
+### 2. Push to GitHub (Optional)
+
+```sh
 git init
 git remote add origin https://github.com/MousaAshraf/User-Authentication-Multi-User-Support.git
 git add .
 git commit -m "Initial commit of xv6 user auth project"
 git branch -M main
 git push -u origin main
+```
 
-📝 Notes
-Only the admin user can access the user management tool.
+---
 
-User info is stored in kernel memory in a simple static table.
+## 📝 Notes
 
-You can expand it to use file-based persistence for long-term storage.
+- Only the admin user can access the user management tool.  
+- User information is stored in kernel memory using a simple static table.  
+- You can expand the system to use file-based persistence for long-term storage.
 
-📚 Based On
-MIT xv6 Operating System (2021)
+---
 
-📄 License
-Educational use only. Based on xv6-public from MIT.
+## 📚 Based On
+
+- [MIT xv6 Operating System (2021)](https://pdos.csail.mit.edu/6.828/2021/xv6.html)
+
+---
+
+## 📄 License
+
+For educational use only. Based on `xv6-public` from MIT.
