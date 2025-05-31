@@ -185,5 +185,14 @@ void            virtio_disk_init(void);
 void            virtio_disk_rw(struct buf *, int);
 void            virtio_disk_intr(void);
 
+// user.c 
+void init_users(void);
+int add_user(char*, char*, int);
+int authenticate_user(char*, char*);
+int delete_user(char*);
+int is_current_user_admin(void);
+void save_users_to_storage(void);
+void load_users_from_storage(void);
+
 // number of elements in fixed-size array
 #define NELEM(x) (sizeof(x)/sizeof((x)[0]))

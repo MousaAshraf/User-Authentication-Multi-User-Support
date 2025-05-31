@@ -22,6 +22,10 @@ int getpid(void);
 char* sbrk(int);
 int sleep(int);
 int uptime(void);
+int login(char*, char*);
+int adduser(char*, char*, int);
+int deluser(char*);
+int isadmin(void);
 
 // ulib.c
 int stat(const char*, struct stat*);

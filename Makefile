@@ -30,6 +30,7 @@ OBJS = \
   $K/sysfile.o \
   $K/kernelvec.o \
   $K/plic.o \
+  $K/user.o\
   $K/virtio_disk.o
 
 OBJS_KCSAN = \
@@ -194,7 +195,9 @@ UPROGS=\
 	$U/_grind\
 	$U/_wc\
 	$U/_zombie\
-
+        $U/_login\
+	$U/_usermgmt\
+        $U/_logout\
 
 
 

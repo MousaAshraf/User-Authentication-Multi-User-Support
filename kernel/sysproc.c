@@ -5,6 +5,7 @@
 #include "memlayout.h"
 #include "spinlock.h"
 #include "proc.h"
+#include "user.h"
 
 uint64
 sys_exit(void)
@@ -90,4 +91,57 @@ sys_uptime(void)
   xticks = ticks;
   release(&tickslock);
   return xticks;
+}
+
+uint64
+sys_login(void)
+{
+    char username[MAX_USERNAME];
+    char password[MAX_PASSWORD];
+    
+    if (argstr(0, username, MAX_USERNAME) < 0 ||
+        argstr(1, password, MAX_PASSWORD) < 0)
+        return -1;
+    
+    return authenticate_user(username, password);
+}
+
+uint64
+sys_adduser(void)
+{
+    char username[MAX_USERNAME];
+    char password[MAX_PASSWORD];
+    int is_admin;
+    
+    if (!is_current_user_admin())
+        return -4;
+    
+    if (argstr(0, username, MAX_USERNAME) < 0)
+        return -1;
+    if (argstr(1, password, MAX_PASSWORD) < 0)
+        return -1;
+    
+    argint(2, &is_admin);
+    
+    return add_user(username, password, is_admin);
+}
+
+uint64
+sys_deluser(void)
+{
+    char username[MAX_USERNAME];
+    
+    if (!is_current_user_admin())
+        return -4;
+    
+    if (argstr(0, username, MAX_USERNAME) < 0)
+        return -1;
+    
+    return delete_user(username);
+}
+
+uint64
+sys_isadmin(void)
+{
+    return is_current_user_admin();
 }

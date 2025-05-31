@@ -36,3 +36,7 @@ entry("getpid");
 entry("sbrk");
 entry("sleep");
 entry("uptime");
+entry("login");
+entry("adduser");
+entry("deluser");
+entry("isadmin");

@@ -20,3 +20,7 @@
 #define SYS_link   19
 #define SYS_mkdir  20
 #define SYS_close  21
+#define SYS_login    22
+#define SYS_adduser  23
+#define SYS_deluser  24
+#define SYS_isadmin  25
